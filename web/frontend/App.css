@@ -1,0 +1,34 @@
+.connectBtn {
+  background-color: #00a1b2;
+  color: var(--p-text-on-primary);
+  padding: 10px 20px;
+  text-decoration: none;
+  margin: 20px 0 10px 0;
+  border-radius: 6px;
+}
+
+svg.svg-inline--fa.fa-star {
+  height: 50px;
+  color: #00a1b2;
+}
+.Polaris-TextContainer.Polaris-TextContainer--spacingLoose {
+  margin: 10px 0;
+}
+
+#primaryBtn {
+  background-color: #00a1b2;
+  color: var(--p-text-on-primary);
+  padding: 10px 20px;
+  text-decoration: none;
+  margin: 20px 0 10px 0;
+  border-radius: 6px;
+}
+#disconnectBtn {
+  background-color: var(--p-action-secondary);
+  color: #00a1b2;
+  border-color: #00a1b2;
+  padding: 10px 20px;
+  text-decoration: none;
+  margin: 20px 0 10px 0;
+  border-radius: 6px;
+}
