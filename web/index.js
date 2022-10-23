@@ -1,4 +1,6 @@
-// @ts-check
+import dotenv from 'dotenv'
+dotenv.config()
+
 import { join } from "path";
 import { readFileSync } from "fs";
 import express from "express";
