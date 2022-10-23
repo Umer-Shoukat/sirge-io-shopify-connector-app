@@ -24,6 +24,10 @@ export default function App() {
           <QueryProvider>
             <NavigationMenu
               navigationLinks={[
+                {
+                  label: "Home",
+                  destination: "/"
+                }
               ]}
             />
             <Routes pages={pages} />

@@ -25,8 +25,8 @@ svg.svg-inline--fa.fa-star {
 }
 #disconnectBtn {
   background-color: var(--p-action-secondary);
-  color: #00a1b2;
-  border-color: #00a1b2;
+  color: red;
+  border-color: red;
   padding: 10px 20px;
   text-decoration: none;
   margin: 20px 0 10px 0;

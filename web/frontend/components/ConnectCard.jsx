@@ -117,9 +117,14 @@ export const ConnectCard = ({ shopObjData }) => {
             </TextContainer>
           </>
         ) : (
-          <DisplayText element="h2" size="small">
-            Sirge App is successfully installed on your Shopify store.
-          </DisplayText>
+          <>
+            <DisplayText element="h2" size="small">
+              Sirge App is successfully installed on your Shopify store.
+            </DisplayText>
+            <TextContainer spacing="loose">
+              <p>To disconnect to Sirge App Click the Disconnect Button</p>
+            </TextContainer>
+          </>
         )}
         {isLoading ? (
           <div style={{ textAlign: "center", margin: "20px 0 10px 0" }}>
@@ -127,8 +132,8 @@ export const ConnectCard = ({ shopObjData }) => {
           </div>
         ) : (
           <>
-            <div style={{ textAlign: "center", margin: "20px 0 10px 0" }}>
-              {showConnect && (
+            {showConnect && (
+              <div style={{ textAlign: "center", margin: "20px 0 10px 0" }}>
                 <a
                   target="_self"
                   href={`https://accounts.dev.sirge.io/settings/shopify/select-business?shop=https://${shopObjData?.session?.shop}&shopify-token=${shopObjData?.session?.accessToken}`}
@@ -136,13 +141,11 @@ export const ConnectCard = ({ shopObjData }) => {
                 >
                   Connect
                 </a>
-              )}
-            </div>
+              </div>
+            )}
+
             {!showConnect && (
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <Button id="primaryBtn" onClick={addScript}>
-                  Add Script
-                </Button>
+              <div style={{ display: "flex", justifyContent: "flex-end" }}>
                 <Button id="disconnectBtn" onClick={dissconnectScript}>
                   Disconnect
                 </Button>
