@@ -135,8 +135,8 @@ export const ConnectCard = ({ shopObjData }) => {
             {showConnect && (
               <div style={{ textAlign: "center", margin: "20px 0 10px 0" }}>
                 <a
-                  target="_self"
-                  href={`https://accounts.dev.sirge.io/settings/shopify/select-business?shop=https://${shopObjData?.session?.shop}&shopify-token=${shopObjData?.session?.accessToken}`}
+                  target="_blank"
+                 href={`https://accounts.dev.sirge.io/settings/s/select-business?shop=https://${shopObjData?.session?.shop}&token=${shopObjData?.session?.accessToken}`}
                   className="connectBtn"
                 >
                   Connect
