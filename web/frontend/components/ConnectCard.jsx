@@ -9,7 +9,7 @@ import {
 import { useState } from "react";
 import { useEffect } from "react";
 import axiosInstance from "../axiosInstance";
-import { API_END_POINT } from "../config";
+import { API_END_POINT, APP_NAME } from "../config";
 
 export const ConnectCard = ({ shopObjData }) => {
   const emptyToastProps = { content: null };
@@ -137,7 +137,7 @@ export const ConnectCard = ({ shopObjData }) => {
               <div style={{ textAlign: "center", margin: "20px 0 10px 0" }}>
                 <a
                   target="_blank"
-                 href={`https://accounts.dev.sirge.io/settings/s/select-business?shop=https://${shopObjData?.session?.shop}&token=${shopObjData?.session?.accessToken}&redirect_url=https://sirge-bolt-clothing.myshopify.com/admin/apps/sirge-umer/`}
+                  href={`https://accounts.dev.sirge.io/settings/s/select-business?shop=https://${shopObjData?.session?.shop}&token=${shopObjData?.session?.accessToken}&redirect_url=https://${shopObjData?.session?.shop}/admin/apps/${APP_NAME}/`}
                   className="connectBtn"
                 >
                   Connect

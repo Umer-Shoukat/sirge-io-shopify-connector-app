@@ -86,6 +86,8 @@ export async function createServer(
     billing: billingSettings,
   });
 
+  console.log(app)
+
   // Do not call app.use(express.json()) before processing webhooks with
   // Shopify.Webhooks.Registry.process().
   // See https://github.com/Shopify/shopify-api-node/blob/main/docs/usage/webhooks.md#note-regarding-use-of-body-parsers
