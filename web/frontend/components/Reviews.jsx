@@ -14,11 +14,13 @@ const Reviews = () => {
           </p>
         </TextContainer>
         <div style={{display: "flex" , width: "50%" , alignItems:"center" , alignContent: "center" , margin: " 0 auto" , justifyContent: "center" , padding: "10px 0"}}>
+          <a href="https://apps.shopify.com/" target="_blank">
         <FontAwesomeIcon icon={faStar} />
         <FontAwesomeIcon icon={faStar} />
         <FontAwesomeIcon icon={faStar} />
         <FontAwesomeIcon icon={faStar} />
         <FontAwesomeIcon icon={faStar} />
+        </a>
         </div>
         <TextContainer spacing="loose">
           <p style={{margin: "10px"}}>

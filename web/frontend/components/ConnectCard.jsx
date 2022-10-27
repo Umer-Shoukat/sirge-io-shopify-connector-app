@@ -92,6 +92,7 @@ export const ConnectCard = ({ shopObjData }) => {
     } catch (err) {
       setToastProps({ content: err.error });
     } finally {
+      setShowConnect(true);
       setIsLoading(false);
     }
   };
