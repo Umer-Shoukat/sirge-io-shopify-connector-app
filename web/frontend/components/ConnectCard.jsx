@@ -9,7 +9,7 @@ import {
 import { useState } from "react";
 import { useEffect } from "react";
 import axiosInstance from "../axiosInstance";
-import { API_END_POINT, APP_NAME } from "../config";
+import { API_END_POINT, APP_NAME, CONNECT_END_POINT } from "../config";
 
 export const ConnectCard = ({ shopObjData }) => {
   const emptyToastProps = { content: null };
@@ -111,19 +111,19 @@ export const ConnectCard = ({ shopObjData }) => {
         {showConnect ? (
           <>
             <DisplayText element="h2" size="small">
-              Connect To Sirge App
+            Connect to Sirge Install Wizard
             </DisplayText>
             <TextContainer spacing="loose">
-              <p>To connect to Sirge App Click the Connect Button</p>
+              <p>To connect to the Sirge Install Wizard, please click the Connect button</p>
             </TextContainer>
           </>
         ) : (
           <>
             <DisplayText element="h2" size="small">
-              Sirge App is successfully installed on your Shopify store.
+            Sirge Install Wizard is successfully connected to your Shopify store
             </DisplayText>
             <TextContainer spacing="loose">
-              <p>To disconnect to Sirge App Click the Disconnect Button</p>
+              <p>To disconnect to the Sirge Install Wizard, please click the Disconnect button</p>
             </TextContainer>
           </>
         )}
@@ -137,7 +137,7 @@ export const ConnectCard = ({ shopObjData }) => {
               <div style={{ textAlign: "center", margin: "20px 0 10px 0" }}>
                 <a
                   target="_blank"
-                  href={`${API_END_POINT}/settings/s/select-business?shop=https://${shopObjData?.session?.shop}&token=${shopObjData?.session?.accessToken}&redirect_url=https://${shopObjData?.session?.shop}/admin/apps/${APP_NAME}/`}
+                  href={`${CONNECT_END_POINT}settings/s/select-business?shop=https://${shopObjData?.session?.shop}&token=${shopObjData?.session?.accessToken}&redirect_url=https://${shopObjData?.session?.shop}/admin/apps/${APP_NAME}/`}
                   className="connectBtn"
                 >
                   Connect
