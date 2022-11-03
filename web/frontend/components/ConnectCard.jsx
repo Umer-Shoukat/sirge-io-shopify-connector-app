@@ -22,7 +22,7 @@ export const ConnectCard = ({ shopObjData }) => {
     try {
       setIsLoading(true);
       const resp = await axiosInstance.get(
-        `/shopify/store/lookup?shop=https://${shopObjData?.session?.shop}`
+        `/s/store/lookup?shop=https://${shopObjData?.session?.shop}`
       );
 
       const data = resp.data;
@@ -82,10 +82,10 @@ export const ConnectCard = ({ shopObjData }) => {
     try {
       setIsLoading(true);
       await axiosInstance.delete(
-        `/${businessState.business_id}/shopify/script`
+        `/${businessState.business_id}/s/script`
       );
       const resp = await axiosInstance.delete(
-        `/${businessState.business_id}/shopify/disconnect`
+        `/${businessState.business_id}/s/disconnect`
       );
       const data = resp.data;
       setToastProps({ content: data.success });

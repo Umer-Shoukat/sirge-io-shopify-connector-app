@@ -1,5 +1,5 @@
-import dotenv from 'dotenv'
-dotenv.config()
+import dotenv from "dotenv";
+dotenv.config();
 
 import { join } from "path";
 import { readFileSync } from "fs";
@@ -17,7 +17,7 @@ import { AppInstallations } from "./app_installations.js";
 
 const USE_ONLINE_TOKENS = false;
 
-const PORT = process.env.BACKEND_PORT || 5000
+const PORT = process.env.BACKEND_PORT || 5000;
 
 // TODO: There should be provided by env vars
 const DEV_INDEX_PATH = `${process.cwd()}/frontend/`;
@@ -36,7 +36,9 @@ Shopify.Context.initialize({
   // This should be replaced with your preferred storage strategy
   // See note below regarding using CustomSessionStorage with this template.
   SESSION_STORAGE: new Shopify.Session.SQLiteSessionStorage(DB_PATH),
-  ...(process.env.SHOP_CUSTOM_DOMAIN && {CUSTOM_SHOP_DOMAINS: [process.env.SHOP_CUSTOM_DOMAIN]}),
+  ...(process.env.SHOP_CUSTOM_DOMAIN && {
+    CUSTOM_SHOP_DOMAINS: [process.env.SHOP_CUSTOM_DOMAIN],
+  }),
 });
 
 // NOTE: If you choose to implement your own storage strategy using
@@ -85,8 +87,6 @@ export async function createServer(
   applyAuthMiddleware(app, {
     billing: billingSettings,
   });
-
-  console.log(app)
 
   // Do not call app.use(express.json()) before processing webhooks with
   // Shopify.Webhooks.Registry.process().
@@ -145,7 +145,7 @@ export async function createServer(
     res.status(status).send({ success: status === 200, error });
   });
 
-  app.get("/api/shop" , async (req,res) => {
+  app.get("/api/shop", async (req, res) => {
     const session = await Shopify.Utils.loadCurrentSession(
       req,
       res,
@@ -155,9 +155,9 @@ export async function createServer(
       `@shopify/shopify-api/dist/rest-resources/${Shopify.Context.API_VERSION}/index.js`
     );
 
-    const shop = await Shop.all({session});
+    const shop = await Shop.all({ session });
     res.status(200).send(shop);
-  })
+  });
 
   // All endpoints after this point will have access to a request.body
   // attribute, as a result of the express.json() middleware
