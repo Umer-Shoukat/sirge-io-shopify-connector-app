@@ -136,7 +136,7 @@ export const ConnectCard = ({ shopObjData }) => {
             {showConnect && (
               <div style={{ textAlign: "center", margin: "20px 0 10px 0" }}>
                 <a
-                  target="_blank"
+                  target="_self"
                   href={`${CONNECT_END_POINT}settings/s/select-business?shop=https://${shopObjData?.session?.shop}&token=${shopObjData?.session?.accessToken}&redirect_url=https://${shopObjData?.session?.shop}/admin/apps/${APP_NAME}/`}
                   className="connectBtn"
                 >
