@@ -52,6 +52,7 @@ export function ProductsCard() {
   return (
     <>
       {toastMarkup}
+     
       <Card
         title="Product Counter"
         sectioned

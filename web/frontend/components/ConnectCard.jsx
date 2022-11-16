@@ -10,7 +10,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axiosInstance from "../axiosInstance";
 import { API_END_POINT, APP_NAME, CONNECT_END_POINT } from "../config";
-
+import { Modal } from "@shopify/app-bridge-react";
+import { useNavigate } from "@shopify/app-bridge-react";
+import createApp from "@shopify/app-bridge";
+import { Redirect } from "@shopify/app-bridge/actions";
 export const ConnectCard = ({ shopObjData }) => {
   const emptyToastProps = { content: null };
   const [toastProps, setToastProps] = useState(emptyToastProps);
@@ -81,9 +84,7 @@ export const ConnectCard = ({ shopObjData }) => {
   const dissconnectScript = async () => {
     try {
       setIsLoading(true);
-      await axiosInstance.delete(
-        `/${businessState.business_id}/s/script`
-      );
+      await axiosInstance.delete(`/${businessState.business_id}/s/script`);
       const resp = await axiosInstance.delete(
         `/${businessState.business_id}/s/disconnect`
       );
@@ -100,30 +101,44 @@ export const ConnectCard = ({ shopObjData }) => {
     <Toast {...toastProps} onDismiss={() => setToastProps(emptyToastProps)} />
   );
 
+  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const handleConnect = () => {
+    navigate(
+      `${CONNECT_END_POINT}settings/s/select-business?shop=https://${shopObjData?.session?.shop}&token=${shopObjData?.session?.accessToken}&redirect_url=https://${shopObjData?.session?.shop}/admin/apps/${APP_NAME}/`
+    );
+  };
+
   useEffect(() => {
     checkBusiness();
   }, []);
   return (
     <>
       {toastMarkup}
-
       <Card sectioned>
         {showConnect ? (
           <>
             <DisplayText element="h2" size="small">
-            Connect to Sirge Install Wizard
+              Connect to Sirge Install Wizard
             </DisplayText>
             <TextContainer spacing="loose">
-              <p>To connect to the Sirge Install Wizard, please click the Connect button</p>
+              <p>
+                To connect to the Sirge Install Wizard, please click the Connect
+                button
+              </p>
             </TextContainer>
           </>
         ) : (
           <>
             <DisplayText element="h2" size="small">
-            Sirge Install Wizard is successfully connected to your Shopify store
+              Sirge Install Wizard is successfully connected to your Shopify
+              store
             </DisplayText>
             <TextContainer spacing="loose">
-              <p>To disconnect to the Sirge Install Wizard, please click the Disconnect button</p>
+              <p>
+                To disconnect to the Sirge Install Wizard, please click the
+                Disconnect button
+              </p>
             </TextContainer>
           </>
         )}
@@ -135,13 +150,16 @@ export const ConnectCard = ({ shopObjData }) => {
           <>
             {showConnect && (
               <div style={{ textAlign: "center", margin: "20px 0 10px 0" }}>
-                <a
+                {/* <a
                   target="_self"
                   href={`${CONNECT_END_POINT}settings/s/select-business?shop=https://${shopObjData?.session?.shop}&token=${shopObjData?.session?.accessToken}&redirect_url=https://${shopObjData?.session?.shop}/admin/apps/${APP_NAME}/`}
                   className="connectBtn"
                 >
                   Connect
-                </a>
+                </a> */}
+                 <button className="connectBtn" onClick={handleConnect}>
+                  Connect
+                </button>
               </div>
             )}
 
@@ -155,6 +173,16 @@ export const ConnectCard = ({ shopObjData }) => {
           </>
         )}
       </Card>
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+        message="URL Modal"
+        primaryAction={{
+          url: "https://www.google.com/",
+          target: "APP",
+          content: "URL",
+        }}
+      />
     </>
   );
 };
